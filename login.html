@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,96 +16,53 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://i.pinimg.com/736x/12/c4/6a/12c46a9c2dc5ff870c1670b0380ac950.jpg');
-            background-size: cover;
-            background-position: center;
         }
         .login-container {
             text-align: center;
-            padding: 40px;
-            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            width: 90%;
-        }
-        .login-container h2 {
-            margin-bottom: 30px;
-            font-size: 28px;
         }
         .login-container input {
-            padding: 12px;
-            font-size: 20px;
-            margin: 10px 0;
+            padding: 10px;
+            font-size: 18px;
+            margin-right: 10px;
             border: none;
             border-radius: 4px;
-            width: 80%;
-            font-family: 'Amatic SC', cursive;
         }
         .login-container button {
-            padding: 12px 25px;
-            font-size: 22px;
+            padding: 10px 20px;
+            font-size: 18px;
             background-color: #8b0000;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 15px;
-            font-family: 'Amatic SC', cursive;
-            transition: background-color 0.3s;
         }
         .login-container button:hover {
             background-color: #b22222;
-        }
-        .error-message {
-            color: #ff6b6b;
-            margin-top: 15px;
-            display: none;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Inserisci il codice per sbloccare il sito:</h2>
-        <input type="password" id="unlock-code" placeholder="Codice speciale">
+        <input type="password" id="unlock-code" placeholder="Codice">
         <button onclick="unlockSite()">Sblocca</button>
-        <div id="error-message" class="error-message">Codice errato! Prova di nuovo :)</div>
     </div>
 
     <script>
         function unlockSite() {
             const enteredCode = document.getElementById('unlock-code').value;
             const correctCode = '030323'; 
-            const errorMessage = document.getElementById('error-message');
             
             if (enteredCode === correctCode) {
-                // Salva l'autenticazione in sessionStorage e localStorage per maggiore sicurezza
                 sessionStorage.setItem('unlocked', 'true');
-                localStorage.setItem('siteUnlocked', 'true');
-                
-                // Reindirizza alla pagina principale
-                window.location.href = 'main.html'; 
+                window.location.href = 'Superrquack.html'; 
             } else {
-                errorMessage.style.display = 'block';
-                // Aggiungi un effetto di "shake" al container
-                document.querySelector('.login-container').style.animation = 'shake 0.5s';
-                setTimeout(() => {
-                    document.querySelector('.login-container').style.animation = '';
-                }, 500);
+                alert('daiii, è una data molto importante :>');
             }
-        }
-
-        // Aggiungi la possibilità di premere Enter per inviare il codice
-        document.getElementById('unlock-code').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                unlockSite();
-            }
-        });
-
-        // Se l'utente è già autenticato, reindirizza direttamente
-        if (sessionStorage.getItem('unlocked') === 'true' || localStorage.getItem('siteUnlocked') === 'true') {
-            window.location.href = 'main.html';
         }
     </script>
 </body>
